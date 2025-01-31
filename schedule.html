@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Athletic Band Events</title>
+    <title>Full Schedule</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,6 +35,22 @@
         </table>
     </div>
     
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const events = [
+                { "Date": "2025-01-12", "Day": "Sunday", "Sport": "W Basketball", "Opponent": "Oregon", "Report Time": "12:00 PM", "Start Time": "1:00 PM", "Location": "Schott", "Band": "GRAY" },
+                { "Date": "2025-01-17", "Day": "Friday", "Sport": "M Basketball", "Opponent": "Indiana", "Report Time": "7:00 PM", "Start Time": "8:00 PM", "Location": "Schott", "Band": "MBB" },
+                { "Date": "2025-01-23", "Day": "Thursday", "Sport": "W Basketball", "Opponent": "Maryland", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "Schott", "Band": "SCARLET" },
+                { "Date": "2025-01-24", "Day": "Friday", "Sport": "W Ice Hockey", "Opponent": "Minnesota State", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "OSU Ice Rink", "Band": "C" }
+            ];
+            
+            const scheduleTable = document.querySelector("#schedule tbody");
+            events.forEach(event => {
+                const row = document.createElement("tr");
+                row.innerHTML = `<td>${event.Date}</td><td>${event.Day}</td><td>${event.Sport}</td><td>${event.Opponent}</td><td>${event["Report Time"]}</td><td>${event["Start Time"]}</td><td>${event.Location}</td><td>${event.Band}</td>`;
+                scheduleTable.appendChild(row);
+            });
+        });
+    </script>
 </body>
 </html>
