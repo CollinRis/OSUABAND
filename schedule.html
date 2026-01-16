@@ -20,6 +20,24 @@
     
     <div class="container">
         <h1>Full Schedule</h1>
+        <div class="schedule-filter">
+            <label for="band-filter">Filter by band:</label>
+            <select id="band-filter">
+                <option value="all">All Bands</option>
+                <option value="group:Scarlet">Scarlet Band (A/B)</option>
+                <option value="group:Gray">Gray Band (C/D)</option>
+                <option value="group:Buckeye">Buckeye Band (E/F)</option>
+                <option value="band:Scarlet">Band = Scarlet</option>
+                <option value="band:Gray">Band = Gray</option>
+                <option value="band:Buckeye">Band = Buckeye</option>
+                <option value="letter:A">Band = A</option>
+                <option value="letter:B">Band = B</option>
+                <option value="letter:C">Band = C</option>
+                <option value="letter:D">Band = D</option>
+                <option value="letter:E">Band = E</option>
+                <option value="letter:F">Band = F</option>
+            </select>
+        </div>
         <table id="schedule">
             <thead>
                 <tr>
@@ -110,10 +128,53 @@
 ;
             
             const scheduleTable = document.querySelector("#schedule tbody");
-            events.forEach(event => {
-                const row = document.createElement("tr");
-                row.innerHTML = `<td>${event.Date}</td><td>${event.Day}</td><td>${event.Sport}</td><td>${event.Opponent}</td><td>${event["Report Time"]}</td><td>${event["Start Time"]}</td><td>${event.Location}</td><td>${event.Band}</td>`;
-                scheduleTable.appendChild(row);
+            const bandFilter = document.getElementById("band-filter");
+
+            const bandGroupMap = {
+                A: "Scarlet",
+                B: "Scarlet",
+                C: "Gray",
+                D: "Gray",
+                E: "Buckeye",
+                F: "Buckeye"
+            };
+
+            const normalizeBand = (band) => band.trim();
+
+            const renderSchedule = (filter) => {
+                scheduleTable.innerHTML = "";
+
+                events.forEach(event => {
+                    const rawBand = normalizeBand(event.Band || "");
+                    const bandCode = rawBand.toUpperCase();
+                    const bandGroup = bandGroupMap[bandCode] || "";
+                    const bandName = bandCode === "SCARLET" || bandCode === "GRAY" || bandCode === "BUCKEYE"
+                        ? bandCode[0] + bandCode.slice(1).toLowerCase()
+                        : "";
+
+                    if (filter !== "all") {
+                        const [filterType, filterValue] = filter.split(":");
+                        if (filterType === "group" && bandGroup !== filterValue) {
+                            return;
+                        }
+                        if (filterType === "band" && bandName !== filterValue) {
+                            return;
+                        }
+                        if (filterType === "letter" && bandCode !== filterValue) {
+                            return;
+                        }
+                    }
+
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${event.Date}</td><td>${event.Day}</td><td>${event.Sport}</td><td>${event.Opponent}</td><td>${event["Report Time"]}</td><td>${event["Start Time"]}</td><td>${event.Location}</td><td>${event.Band}</td>`;
+                    scheduleTable.appendChild(row);
+                });
+            };
+
+            renderSchedule("all");
+
+            bandFilter.addEventListener("change", (event) => {
+                renderSchedule(event.target.value);
             });
         });
     </script>
