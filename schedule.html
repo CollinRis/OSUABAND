@@ -27,6 +27,12 @@
                 <option value="Scarlet">Scarlet Band (A/B)</option>
                 <option value="Gray">Gray Band (C/D)</option>
                 <option value="Buckeye">Buckeye Band (E/F)</option>
+                <option value="A">Band A</option>
+                <option value="B">Band B</option>
+                <option value="C">Band C</option>
+                <option value="D">Band D</option>
+                <option value="E">Band E</option>
+                <option value="F">Band F</option>
             </select>
         </div>
         <table id="schedule">
@@ -127,7 +133,11 @@
                 C: "Gray",
                 D: "Gray",
                 E: "Buckeye",
-                F: "Buckeye"
+                F: "Buckeye",
+                SCARLET: "Scarlet",
+                GRAY: "Gray",
+                GREY: "Gray",
+                BUCKEYE: "Buckeye"
             };
 
             const renderSchedule = (filter) => {
@@ -137,8 +147,14 @@
                     const bandCode = (event.Band || "").trim().toUpperCase();
                     const bandGroup = bandGroupMap[bandCode] || "";
 
-                    if (filter !== "all" && bandGroup !== filter) {
-                        return;
+                    if (filter !== "all") {
+                        if (["A", "B", "C", "D", "E", "F"].includes(filter)) {
+                            if (bandCode !== filter) {
+                                return;
+                            }
+                        } else if (bandGroup !== filter) {
+                            return;
+                        }
                     }
 
                     const row = document.createElement("tr");
