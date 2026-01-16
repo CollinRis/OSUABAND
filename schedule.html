@@ -20,6 +20,15 @@
     
     <div class="container">
         <h1>Full Schedule</h1>
+        <div class="schedule-filter">
+            <label for="band-filter">Filter by band:</label>
+            <select id="band-filter">
+                <option value="all">All Bands</option>
+                <option value="Scarlet">Scarlet Band (A/B)</option>
+                <option value="Gray">Gray Band (C/D)</option>
+                <option value="Buckeye">Buckeye Band (E/F)</option>
+            </select>
+        </div>
         <table id="schedule">
             <thead>
                 <tr>
@@ -110,10 +119,38 @@
 ;
             
             const scheduleTable = document.querySelector("#schedule tbody");
-            events.forEach(event => {
-                const row = document.createElement("tr");
-                row.innerHTML = `<td>${event.Date}</td><td>${event.Day}</td><td>${event.Sport}</td><td>${event.Opponent}</td><td>${event["Report Time"]}</td><td>${event["Start Time"]}</td><td>${event.Location}</td><td>${event.Band}</td>`;
-                scheduleTable.appendChild(row);
+            const bandFilter = document.getElementById("band-filter");
+
+            const bandGroupMap = {
+                A: "Scarlet",
+                B: "Scarlet",
+                C: "Gray",
+                D: "Gray",
+                E: "Buckeye",
+                F: "Buckeye"
+            };
+
+            const renderSchedule = (filter) => {
+                scheduleTable.innerHTML = "";
+
+                events.forEach(event => {
+                    const bandCode = (event.Band || "").trim().toUpperCase();
+                    const bandGroup = bandGroupMap[bandCode] || "";
+
+                    if (filter !== "all" && bandGroup !== filter) {
+                        return;
+                    }
+
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${event.Date}</td><td>${event.Day}</td><td>${event.Sport}</td><td>${event.Opponent}</td><td>${event["Report Time"]}</td><td>${event["Start Time"]}</td><td>${event.Location}</td><td>${event.Band}</td>`;
+                    scheduleTable.appendChild(row);
+                });
+            };
+
+            renderSchedule("all");
+
+            bandFilter.addEventListener("change", (event) => {
+                renderSchedule(event.target.value);
             });
         });
     </script>
