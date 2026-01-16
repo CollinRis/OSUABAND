@@ -40,32 +40,37 @@ document.addEventListener("DOMContentLoaded", function () {
         <p><strong>Conductor:</strong> ${nextEvent.Conductor}</p>
         <p><strong>Special Comments:</strong> ${nextEvent["Special Comments"]}</p>
     `;
-});
-// Populate full schedule
-const scheduleBody = document.getElementById("schedule-body");
-events.forEach(event => {
-    const row = document.createElement("tr");
-    row.innerHTML = `
-        <td>${event.Date}</td>
-        <td>${event.Day}</td>
-        <td>${event.Sport}</td>
-        <td>${event.Opponent}</td>
-        <td>${event["Report Time"]}</td>
-        <td>${event["Start Time"]}</td>
-        <td>${event.Location}</td>
-        <td>${event.Band}</td>
-        <td>${event.Conductor}</td>
-        <td>${event["Special Comments"]}</td>
-    `;
-    scheduleBody.appendChild(row);
-});
 
-// Toggle visibility
-const toggleBtn = document.getElementById("toggle-btn");
-const scheduleDiv = document.getElementById("full-schedule");
+    // Populate full schedule
+    const scheduleBody = document.getElementById("schedule-body");
+    if (scheduleBody) {
+        events.forEach(event => {
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td>${event.Date}</td>
+                <td>${event.Day}</td>
+                <td>${event.Sport}</td>
+                <td>${event.Opponent}</td>
+                <td>${event["Report Time"]}</td>
+                <td>${event["Start Time"]}</td>
+                <td>${event.Location}</td>
+                <td>${event.Band}</td>
+                <td>${event.Conductor}</td>
+                <td>${event["Special Comments"]}</td>
+            `;
+            scheduleBody.appendChild(row);
+        });
+    }
 
-toggleBtn.addEventListener("click", () => {
-    const isHidden = scheduleDiv.style.display === "none";
-    scheduleDiv.style.display = isHidden ? "block" : "none";
-    toggleBtn.textContent = isHidden ? "Hide Full Schedule" : "Show Full Schedule";
+    // Toggle visibility
+    const toggleBtn = document.getElementById("toggle-btn");
+    const scheduleDiv = document.getElementById("full-schedule");
+
+    if (toggleBtn && scheduleDiv) {
+        toggleBtn.addEventListener("click", () => {
+            const isHidden = scheduleDiv.style.display === "none";
+            scheduleDiv.style.display = isHidden ? "block" : "none";
+            toggleBtn.textContent = isHidden ? "Hide Full Schedule" : "Show Full Schedule";
+        });
+    }
 });
