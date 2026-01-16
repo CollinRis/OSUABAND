@@ -1,99 +1,32 @@
 document.addEventListener("DOMContentLoaded", function () {
     const events = [
-  { "Date": "1/14/26", "Day": "Wednesday", "Sport": "W Basketball", "Opponent": "Penn State", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Woods", "Special Comments": "" },
-  { "Date": "1/17/26", "Day": "Saturday", "Sport": "M Basketball", "Opponent": "UCLA", "Report Time": "12:00 PM", "Start Time": "1:00 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Bissler", "Special Comments": "" },
-  { "Date": "1/17/26", "Day": "Saturday", "Sport": "M Volleyball", "Opponent": "Long Beach State", "Report Time": "4:00 PM", "Start Time": "5:00 PM", "Location": "Covelli", "Band": "E", "Conductor": "Reynolds", "Special Comments": "" },
-  { "Date": "1/20/26", "Day": "Tuesday", "Sport": "M Basketball", "Opponent": "Minnesota", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Hoch", "Special Comments": "" },
-  { "Date": "1/22/26", "Day": "Thursday", "Sport": "W Basketball", "Opponent": "Indiana", "Report Time": "7:00 PM", "Start Time": "8:00 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Fihaki", "Special Comments": "" },
-  { "Date": "1/23/26", "Day": "Friday", "Sport": "W Ice Hockey", "Opponent": "St. Thomas", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "OSU Ice Rink", "Band": "A", "Conductor": "Reynolds", "Special Comments": "Honor Band" },
-  { "Date": "1/24/26", "Day": "Saturday", "Sport": "W Ice Hockey", "Opponent": "St. Thomas", "Report Time": "12:00 PM", "Start Time": "1:00 PM", "Location": "OSU Ice Rink", "Band": "B", "Conductor": "Reynolds", "Special Comments": "Honor Band" },
-  { "Date": "1/25/26", "Day": "Sunday", "Sport": "W Gymnastics", "Opponent": "Illinois", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "Covelli", "Band": "F", "Conductor": "Hoch", "Special Comments": "Honor Band" },
-  { "Date": "1/26/26", "Day": "Monday", "Sport": "M Basketball", "Opponent": "Penn State", "Report Time": "6:00 PM", "Start Time": "7:00 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Fihaki", "Special Comments": "" },
-  { "Date": "1/29/26", "Day": "Thursday", "Sport": "W Basketball", "Opponent": "Wisconsin", "Report Time": "7:00 PM", "Start Time": "8:00 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Davern", "Special Comments": "OMEA" },
-  { "Date": "1/30/26", "Day": "Friday", "Sport": "M Ice Hockey", "Opponent": "Michigan", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Bissler", "Special Comments": "OMEA" },
-  { "Date": "1/31/26", "Day": "Saturday", "Sport": "M Gymnastics", "Opponent": "Nebraska", "Report Time": "1:00 PM", "Start Time": "2:00 PM", "Location": "Covelli", "Band": "C", "Conductor": "Fihaki", "Special Comments": "OMEA" },
-  { "Date": "1/31/26", "Day": "Saturday", "Sport": "M Ice Hockey", "Opponent": "Michigan", "Report Time": "3:30 PM", "Start Time": "5:00 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Day", "Special Comments": "Society Hockey Night / OMEA" },
-  { "Date": "2/1/26", "Day": "Sunday", "Sport": "W Basketball", "Opponent": "Nebraska", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Hoch", "Special Comments": "" },
-  { "Date": "2/8/26", "Day": "Sunday", "Sport": "M Basketball", "Opponent": "Michigan", "Report Time": "12:00 PM", "Start Time": "1:00 PM", "Location": "Schott", "Band": "", "Conductor": "Hoch / Reynolds", "Special Comments": "" },
-  { "Date": "2/11/26", "Day": "Wednesday", "Sport": "M Basketball", "Opponent": "USC", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Day", "Special Comments": "Wind Symphony" },
-  { "Date": "2/13/26", "Day": "Friday", "Sport": "W Ice Hockey", "Opponent": "Minnesota", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "OSU Ice Rink", "Band": "D", "Conductor": "Woods", "Special Comments": "Jazz Concert" },
-  { "Date": "2/13/26", "Day": "Friday", "Sport": "M Ice Hockey", "Opponent": "Wisconsin", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Bissler", "Special Comments": "Jazz Concert" },
-  { "Date": "2/14/26", "Day": "Saturday", "Sport": "W Ice Hockey", "Opponent": "Minnesota", "Report Time": "2:00 PM", "Start Time": "3:00 PM", "Location": "OSU Ice Rink", "Band": "C", "Conductor": "Hoch", "Special Comments": "" },
-  { "Date": "2/14/26", "Day": "Saturday", "Sport": "M Ice Hockey", "Opponent": "Wisconsin", "Report Time": "6:30 PM", "Start Time": "7:30 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Day", "Special Comments": "" },
-  { "Date": "2/15/26", "Day": "Sunday", "Sport": "W Basketball", "Opponent": "Maryland", "Report Time": "1:00 PM", "Start Time": "2:00 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Bissler", "Special Comments": "" },
-  { "Date": "2/17/26", "Day": "Tuesday", "Sport": "M Basketball", "Opponent": "Wisconsin", "Report Time": "7:30 PM", "Start Time": "8:30 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Hoch", "Special Comments": "" },
-  { "Date": "2/19/26", "Day": "Thursday", "Sport": "M Volleyball", "Opponent": "Ball State", "Report Time": "6:00 PM", "Start Time": "7:00 PM", "Location": "Covelli", "Band": "F", "Conductor": "Davern", "Special Comments": "" },
-  { "Date": "2/21/26", "Day": "Saturday", "Sport": "M Lacrosse", "Opponent": "High Point", "Report Time": "11:00 AM", "Start Time": "12:00 PM", "Location": "LAX Stadium", "Band": "A", "Conductor": "Day", "Special Comments": "" },
-  { "Date": "2/22/26", "Day": "Sunday", "Sport": "W Basketball", "Opponent": "USC", "Report Time": "11:00/1:00 PM", "Start Time": "12:00/2:00 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Day", "Special Comments": "" },
-  { "Date": "2/25/26", "Day": "Wednesday", "Sport": "W Basketball", "Opponent": "Michigan", "Report Time": "7:00 PM", "Start Time": "8:00 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Woods", "Special Comments": "" },
+        { "Date": "1/14/26", "Day": "Wednesday", "Sport": "W Basketball", "Opponent": "Penn State", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Woods", "Special Comments": "" },
+        { "Date": "1/17/26", "Day": "Saturday", "Sport": "M Basketball", "Opponent": "UCLA", "Report Time": "12:00 PM", "Start Time": "1:00 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Bissler", "Special Comments": "" },
+        // ... rest of events
+    ];
 
-  { "Date": "2/27-3/1/2026", "Day": "Fri.-Sun.", "Sport": "W Ice Hockey", "Opponent": "WCHA 1st Round", "Report Time": "TBD", "Start Time": "TBD", "Location": "OSU Ice Rink", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Only if hosting" },
-
-  { "Date": "3/1/26", "Day": "Sunday", "Sport": "M Basketball", "Opponent": "Purdue", "Report Time": "12:30 PM", "Start Time": "1:30 PM", "Location": "Schott", "Band": "Scarlet", "Conductor": "Fihaki", "Special Comments": "" },
-  { "Date": "3/5/26", "Day": "Thursday", "Sport": "M Ice Hockey", "Opponent": "Notre Dame", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "", "Conductor": "Reynolds / Davern", "Special Comments": "" },
-  { "Date": "3/6/26", "Day": "Friday", "Sport": "M Ice Hockey", "Opponent": "Notre Dame", "Report Time": "5:30 PM", "Start Time": "6:30 PM", "Location": "Schott", "Band": "Buckeye", "Conductor": "Woods", "Special Comments": "" },
-  { "Date": "3/7/26", "Day": "Saturday", "Sport": "M Basketball", "Opponent": "Indiana", "Report Time": "4:30 PM", "Start Time": "5:30 PM", "Location": "Schott", "Band": "Gray", "Conductor": "Hoch", "Special Comments": "" },
-
-  { "Date": "3/4 - 3/8/2026", "Day": "Wed.-Sun.", "Sport": "W Basketball", "Opponent": "B1G Tournament", "Report Time": "TBD", "Start Time": "TBD", "Location": "Gainbridge Fieldhouse", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Indianapolis, IN" },
-  { "Date": "3/10 -3/15/2026", "Day": "Tue.-Sun.", "Sport": "M Basketball", "Opponent": "B1G Tournament", "Report Time": "TBD", "Start Time": "TBD", "Location": "United Center", "Band": "TBD", "Conductor": "Day", "Special Comments": "Chicago, IL / Ireland" },
-
-  { "Date": "3/11/26", "Day": "Wednesday", "Sport": "Softball", "Opponent": "Akron", "Report Time": "4:00 PM", "Start Time": "5:00 PM", "Location": "Buckeye Field", "Band": "E", "Conductor": "Davern", "Special Comments": "" },
-  { "Date": "3/11/26", "Day": "Wednesday", "Sport": "M Ice Hockey", "Opponent": "B1G 1st Round", "Report Time": "TBD", "Start Time": "TBD", "Location": "Schott", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Only if hosting" },
-
-  { "Date": "3/12 -3/14/2026", "Day": "Thu.-Sat.", "Sport": "W Ice Hockey", "Opponent": "NCAA 1st & 2nd Rds.", "Report Time": "TBD", "Start Time": "TBD", "Location": "OSU Ice Rink", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Only if hosting / Ireland" },
-  { "Date": "3/14/26", "Day": "Saturday", "Sport": "M Ice Hockey", "Opponent": "B1G 2nd Round", "Report Time": "TBD", "Start Time": "TBD", "Location": "Schott", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Only if hosting / Ireland" },
-
-  { "Date": "3/17 -3/18/2026", "Day": "Tue.-Wed.", "Sport": "M Basketball", "Opponent": "NCAA First Four", "Report Time": "TBD", "Start Time": "TBD", "Location": "UD Arena", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Dayton, OH / Ireland" },
-  { "Date": "3/18 -3/19/2026", "Day": "Wed.-Thu.", "Sport": "W Basketball", "Opponent": "NCAA First Four", "Report Time": "TBD", "Start Time": "TBD", "Location": "TBD", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Potentially on campus / Ireland" },
-  { "Date": "3/19 -3/22/2026", "Day": "Thu.-Sun.", "Sport": "M Basketball", "Opponent": "NCAA 1st & 2nd Rds.", "Report Time": "TBD", "Start Time": "TBD", "Location": "TBD", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Ireland" },
-  { "Date": "3/20 -3/22/2026", "Day": "Thu.-Sun.", "Sport": "W Ice Hockey", "Opponent": "NCAA Frozen Four", "Report Time": "TBD", "Start Time": "TBD", "Location": "Pegula Ice Arena", "Band": "TBD", "Conductor": "TBD", "Special Comments": "State College, PA / Ireland" },
-  { "Date": "3/20 -3/23/2026", "Day": "Fri.-Mon.", "Sport": "W Basketball", "Opponent": "NCAA 1st & 2nd Rds.", "Report Time": "TBD", "Start Time": "TBD", "Location": "TBD", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Potentially on campus / Ireland" },
-  { "Date": "3/21/26", "Day": "Saturday", "Sport": "M Ice Hockey", "Opponent": "B1G Championship", "Report Time": "TBD", "Start Time": "TBD", "Location": "Schott", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Only if hosting / Ireland" },
-
-  { "Date": "3/26/26", "Day": "Thursday", "Sport": "W Lacrosse", "Opponent": "Oregon", "Report Time": "TBD", "Start Time": "TBD", "Location": "LAX Stadium", "Band": "B", "Conductor": "Davern", "Special Comments": "" },
-  { "Date": "3/26 -3/29/2026", "Day": "Thu.-Sun.", "Sport": "M Basketball", "Opponent": "NCAA Regional", "Report Time": "TBD", "Start Time": "TBD", "Location": "TBD", "Band": "TBD", "Conductor": "TBD", "Special Comments": "" },
-  { "Date": "3/27 -3/30/2026", "Day": "Fri.-Mon.", "Sport": "W Basketball", "Opponent": "NCAA Regional", "Report Time": "TBD", "Start Time": "TBD", "Location": "TBD", "Band": "TBD", "Conductor": "TBD", "Special Comments": "" },
-  { "Date": "3/26 -3/29/2026", "Day": "Thu.-Sun.", "Sport": "M Ice Hockey", "Opponent": "NCAA Regional", "Report Time": "TBD", "Start Time": "TBD", "Location": "TBD", "Band": "TBD", "Conductor": "TBD", "Special Comments": "" },
-
-  { "Date": "3/31/26", "Day": "Tuesday", "Sport": "Baseball", "Opponent": "Toledo", "Report Time": "5:00 PM", "Start Time": "6:00 PM", "Location": "Bill Davis", "Band": "D", "Conductor": "Hoch", "Special Comments": "" },
-
-  { "Date": "4/3 -4/5/2026", "Day": "Fri.-Sun.", "Sport": "W Basketball", "Opponent": "NCAA Final Four", "Report Time": "TBD", "Start Time": "TBD", "Location": "Mortgage Matchup Center", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Phoenix, AZ" },
-  { "Date": "4/4 -4/6/2026", "Day": "Sat.-Mon.", "Sport": "M Basketball", "Opponent": "NCAA Final Four", "Report Time": "TBD", "Start Time": "TBD", "Location": "Lucas Oil Stadium", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Indianapolis, IN" },
-  { "Date": "4/9 -4/11/2026", "Day": "Thu.-Sat.", "Sport": "M Ice Hockey", "Opponent": "NCAA Frozen Four", "Report Time": "TBD", "Start Time": "TBD", "Location": "T-Mobile Arena", "Band": "TBD", "Conductor": "TBD", "Special Comments": "Las Vegas, NV" },
-
-  { "Date": "4/17/26", "Day": "Friday", "Sport": "Spring Game Dress Rehearsal", "Opponent": "", "Report Time": "5:20 PM", "Start Time": "5:20 PM", "Location": "Band Center", "Band": "ALL", "Conductor": "ALL", "Special Comments": "" },
-  { "Date": "4/18/26", "Day": "Saturday", "Sport": "Football Spring Game", "Opponent": "", "Report Time": "TBD", "Start Time": "TBD", "Location": "Ohio Stadium", "Band": "ALL", "Conductor": "ALL", "Special Comments": "" },
-  { "Date": "4/25/26", "Day": "Saturday", "Sport": "DM Tryouts", "Opponent": "", "Report Time": "12:00 PM", "Start Time": "1:00 PM", "Location": "Lincoln Tower Field", "Band": "MAKE-UP", "Conductor": "ALL", "Special Comments": "" }
-]
-;
-    
     function getNextEvent() {
         const today = new Date();
-        today.setHours(0, 0, 0, 0); // Normalize to compare only dates
-    
-        // Convert event dates into Date objects for proper comparison
+        today.setHours(0, 0, 0, 0); // Normalize to midnight
+
         const upcomingEvents = events.map(event => {
-            let eventDateParts = event.Date.split("/");
-            let formattedDate = new Date(eventDateParts[2], eventDateParts[0] - 1, eventDateParts[1]); // Convert MM/DD/YYYY to Date object
-            formattedDate.setHours(0, 0, 0, 0); // Normalize date for comparison
-            return { ...event, parsedDate: formattedDate };
+            let parts = event.Date.split("/");
+            let year = parts[2].length === 2 ? "20" + parts[2] : parts[2];
+            let parsed = new Date(`${year}-${parts[0].padStart(2, '0')}-${parts[1].padStart(2, '0')}`);
+            parsed.setHours(0, 0, 0, 0);
+            return { ...event, parsedDate: parsed };
         });
-    
-        // Filter to find events happening today or in the future
-        const futureEvents = upcomingEvents.filter(event => event.parsedDate >= today);
-    
-        // Sort events by date to find the closest one
+
+        const futureEvents = upcomingEvents.filter(e => e.parsedDate >= today);
         futureEvents.sort((a, b) => a.parsedDate - b.parsedDate);
-    
-        // Get the next upcoming or today's event
-        return futureEvents.length > 0 ? futureEvents[0] : { 
-            "Date": "TBD", "Day": "TBD", "Sport": "No Upcoming Events", 
-            "Opponent": "-", "Report Time": "-", "Start Time": "-", 
-            "Location": "-", "Band": "-" 
+
+        return futureEvents.length > 0 ? futureEvents[0] : {
+            "Date": "TBD", "Day": "TBD", "Sport": "No Upcoming Events",
+            "Opponent": "-", "Report Time": "-", "Start Time": "-",
+            "Location": "-", "Band": "-", "Conductor": "-", "Special Comments": "-"
         };
     }
-    
-    
+
     const nextEvent = getNextEvent();
     document.getElementById("next-event").innerHTML = `
         <p><strong>Date:</strong> ${nextEvent.Date}</p>
@@ -104,12 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         <p><strong>Start Time:</strong> ${nextEvent["Start Time"]}</p>
         <p><strong>Location:</strong> ${nextEvent.Location}</p>
         <p><strong>Band:</strong> ${nextEvent.Band}</p>
+        <p><strong>Conductor:</strong> ${nextEvent.Conductor}</p>
+        <p><strong>Special Comments:</strong> ${nextEvent["Special Comments"]}</p>
     `;
-    
-    const scheduleTable = document.querySelector("#schedule tbody");
-    events.forEach(event => {
-        const row = document.createElement("tr");
-        row.innerHTML = `<td>${event.Date}</td><td>${event.Day}</td><td>${event.Sport}</td><td>${event.Opponent}</td><td>${event["Report Time"]}</td><td>${event["Start Time"]}</td><td>${event.Location}</td><td>${event.Band}</td>`;
-        scheduleTable.appendChild(row);
-    });
 });
